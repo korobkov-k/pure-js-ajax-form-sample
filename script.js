@@ -25,6 +25,7 @@ MyForm = {
             var percent = Math.random();
             var xhr = new XMLHttpRequest();
             var button = document.getElementById('submitButton');
+            var resultContainer = document.getElementById('resultContainer');
 
             if (percent < 0.2) {
                 xhr.open('GET', GITHUB_FOLDER_LINK + '/error.json');
@@ -35,6 +36,7 @@ MyForm = {
             }
 
             xhr.send();
+            resultContainer.innerHTML = "";
             button.value = 'Идет загрузка...';
             button.disabled = true;
             xhr.onreadystatechange = function () {
@@ -43,10 +45,12 @@ MyForm = {
                 button.value = 'Отправить';
                 button.disabled = false;
 
+
+                var responseObj = JSON.parse(xhr.response);
                 if (xhr.status !== 200) {
-                    console.error(xhr.status, xhr.response);
+                    resultContainer.innerHTML = responseObj.status + "<span class='reason'>" + responseObj.reason + "</span>";
                 } else {
-                    console.log(xhr.response);
+                    resultContainer.innerHTML = responseObj.status;
                 }
             }
         } else {
