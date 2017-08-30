@@ -5,6 +5,7 @@ html, body {
     width: 100%;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
 }
 
 #myForm {
@@ -28,6 +29,10 @@ html, body {
     float: right;
 }
 
+#myForm input.error {
+    border: 1px solid red;
+}
+
 #resultContainer {
     display: block;
     width: 240px;
@@ -38,6 +43,32 @@ html, body {
     border: 2px dashed #d0d0d0;
     padding: 40px;
     text-align: center;
-    font-size: 18px;
+    font-size: 20px;
+    text-transform: uppercase;
     color: #333333;
+
+    transition: all linear .2s;
+}
+
+#resultContainer.success {
+    background: lightgreen;
+    border-color: yellowgreen;
+}
+
+#resultContainer.error {
+    background: lightcoral;
+    border-color: indianred;
+}
+
+#resultContainer.progress {
+    background: lightblue;
+    border-color: cadetblue;
+}
+
+#resultContainer .reason {
+    text-transform: none;
+    display: block;
+    font-size: .9em;
+    margin-top: 10px;
+    color: #333;
 }
