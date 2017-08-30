@@ -18,7 +18,8 @@ MyForm = {
 
         //Check phone
         var maxSum = 30;
-        if (formData.phone.match(/\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}/g)[0] == formData.phone) {
+        var phonematches = formData.phone.match(/\+7\([0-9]{3}\)[0-9]{3}-[0-9]{2}-[0-9]{2}/g);
+        if (phonematches != null && phonematches[0] == formData.phone) {
             var numbers = formData.phone.match(/[0-9]/g);
             var sum = numbers.reduce(function(a, b) {
                 return parseInt(a) + parseInt(b);
